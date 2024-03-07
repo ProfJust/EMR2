@@ -7,17 +7,29 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
+
+# ===>>>>> Add used Librarys ===>>>>
+# fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
-add_executable(talkerNode src/talkerNode.cpp)
+add_executable(talkerNode   src/minimal_publisher.cpp)
+ament_target_dependencies(talkerNode rclcpp std_msgs)
+
+# ===>>>>> Add Executable and Dependencies ===>>>>
+add_executable(listenerNode src/minimal_subscriber.cpp)
+ament_target_dependencies(listenerNode rclcpp std_msgs)
+
 target_include_directories(talkerNode PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_compile_features(talkerNode PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
+# ===>>>>> Add target ===>>>>
 install(TARGETS talkerNode
+                listenerNode
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
