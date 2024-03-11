@@ -41,10 +41,13 @@ $ ros2 interface show geometry_msgs/msg/Twist   Zeige die Datenstruktur des Nach
 $ printenv | grep -i ROS                    Zeige alle Umgebungsvariablen an, die die Zeichen ROS enthalten.
 
 
-$ ros2 launch emr2 turtleSim.launch.py      Starte die Launch-Datei
+$ ros2 launch emr2 turtleSim.launch.py      Starte die Launch-Datei  
+  ros2 launch <package_name> <launch_file_name>
 
 $ ros2 service call /map_server/load_map nav2_msgs/srv/LoadMap "{map_url: /home/oj/map1.yaml}"    Aufrufen eines ROS2-Serrvices
 
+$ ros2 topic pub  /turtlesim1/turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+                                        Publishen eine Nachricht
 
 
 ROS2 - Tools
@@ -69,6 +72,7 @@ TurtleSim
 ------------
 $ ros2 run turtlesim turtlesim_node         Starte die TurtleSim 
 $ ros2 run turtlesim turtle_teleop_key      Starte die Tastatursteuerung 
+$ ros2 run turtlesim turtle_teleop_key --ros-args --remap /turtle1/cmd_vel:=/turtle2/cmd_vel   [altes Topic := neues Topic]
 
 
 Linux
@@ -82,6 +86,9 @@ $ ls                                    Zeige alle Dateien im aktuellen Verzeich
 $ pwd                                   Zeige aktuellen Datei-Pfad
 
 $ history                               zeigt die eine Liste der letzen Befehlean
+$ !1524                                 führe Befehl in der Liste mit der #1524 erneut aus
+$ !col                                  führt den Befehl in der History-Liste der mit col beginnt aus
+$ history -c                            Löscht die history-Liste
 
 $ tree                                  zeigt den Dateibaum an
     tree -d                             nur Dateien
@@ -99,7 +106,6 @@ $ top                                   Zeige die Prozessorauslatung und die PID
 
 $ kill 1520                             Beende den Prozess mit der PID 1520
 
-STRG + ALt + Druck + [R, E, I, S,  U,  B]   Affengriff zum Neustart
 
 $ reboot now                            jetzt neu starten
 
@@ -108,4 +114,14 @@ $ sudo shutdown now                     jetzt herunterfahren
 
 $ date                                  Zeige aktuelles Datum an
 
+
+Tastenkombinationen in der Shell
+---------------------------------
+STRG + C            Abbruch des aktuell ausgeführten Programms
+
+STRG + SHIFT + C    Copy
+STRG + SHIFT + V    Paste / Einfügen 
+
+
+STRG + ALt + Druck + [R, E, I, S,  U,  B]   Affengriff zum Neustart
 
