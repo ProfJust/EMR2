@@ -1,0 +1,111 @@
+ROS2-Shell-Kommandos   Liste vom SS24 , wird stetst erweitert
+------------------------------------------------------------------
+
+Kompilieren von C++ -Code
+-------------------------
+$ cd ur3_ws/src/                        wechsel in das Verzeichnis ur3_ws/src
+
+$ colcon build                          kompiliere den Workspace, in dessen src-Ordner du dich gerade befindests
+
+$ source install/local_setup.bash       führe die Bash-Datei aus und mache aktualisiere damit die Links der Executables
+
+$ . install/setup.bash                  führe die Bash-Datei aus und mache aktualisiere damit die Links der Executables
+
+$ ros2 run emr2 listenerNode            führe das Executable aus (hier Paket emr2)
+
+
+ROS2 - Topics, Knoten etc.
+--------------------------
+$ ros2 topic list                       Zeige alle vorhandenen Nachrichtenthemen (Topics) an
+  ros2 topic list >> topiclist.txt      Speicher Liste in Datei
+
+$ ros2 node list                        Zeige alle vorhandenen Knoten (Nodes) an
+
+$ ros2 param list                       Zeige alle Parameter an 
+
+$ ros2 param get /turtlesim background_g            Zeige den Wert des Parameters an
+
+$ ros2 param set /turtlesim background_g 150        Setze den Parameter auf 150
+
+$ ros2 param dump >> turtle.yaml                    Speichere die Parmater in die Yaml-Datei  
+
+$ ros2 topic echo /turtle1/cmd_vel      Zeige den aktuellen Wert des Topics     
+
+$ ros2 topic info /map                  Zeige Informationen zum Topic
+
+$ ros2 topic hz /turtle1/cmd_vel        Zeige den aktuellen Sendetakt in Hertz des Topics 
+
+$ ros2 interface show geometry_msgs/msg/Twist   Zeige die Datenstruktur des Nachrichtentyps Twist
+
+
+$ printenv | grep -i ROS                    Zeige alle Umgebungsvariablen an, die die Zeichen ROS enthalten.
+
+
+$ ros2 launch emr2 turtleSim.launch.py      Starte die Launch-Datei
+
+$ ros2 service call /map_server/load_map nav2_msgs/srv/LoadMap "{map_url: /home/oj/map1.yaml}"    Aufrufen eines ROS2-Serrvices
+
+
+
+ROS2 - Tools
+------------
+$ code                                  Starte Visual Studio Code
+
+$ gedit                                 Starte Ubuntu - Editor (braucht GUI-Oberfläche)
+  gedit .bashrc                         Editiiere die .bashrc - Datei  (. => Versteckte Datei)
+
+
+$ nano                                  Starte Editor für Konsole (braucht keine GUI-Oberfläche, gbenötigt für ssh o.ä.)
+
+$ rqt                                   Starte das ROS-Qt-Tool für Qt-Plugins
+
+$ rviz2                                 Starte das ROS - Vizualizatuon Tool
+
+$ git clone https://github.com/ProfJust/emr2.git    Klone das Repositorium an die Stelle im Dateipfad in der du gerade bist
+
+ 
+
+TurtleSim
+------------
+$ ros2 run turtlesim turtlesim_node         Starte die TurtleSim 
+$ ros2 run turtlesim turtle_teleop_key      Starte die Tastatursteuerung 
+
+
+Linux
+------
+$ cd ..                                 Springe eine Verzeichnisebene höher
+  cd ~                                  Springe ins Home-Verzeichnis         
+
+$ ls                                    Zeige alle Dateien im aktuellen Verzeichnis
+  ls -a                                 Alle Informationen  
+
+$ pwd                                   Zeige aktuellen Datei-Pfad
+
+$ history                               zeigt die eine Liste der letzen Befehlean
+
+$ tree                                  zeigt den Dateibaum an
+    tree -d                             nur Dateien
+    tree -dL 2                          nur die obersten beiden Äste
+
+$ grep -r burger                        Suche rekurisv den Begriff burger in allen Dateien unterhalb
+
+$ chmod +x sw03_readMap.py              Mache die Datei ausführbar
+
+$ sudo apt install ros-humble-hls-lfcd-lds-driver    Installiere ROS-Paket per APT-Tool
+
+$ ip a                                  Zeige die IP-Adresse
+
+$ top                                   Zeige die Prozessorauslatung und die PIDs
+
+$ kill 1520                             Beende den Prozess mit der PID 1520
+
+STRG + ALt + Druck + [R, E, I, S,  U,  B]   Affengriff zum Neustart
+
+$ reboot now                            jetzt neu starten
+
+$ sudo shutdown now                     jetzt herunterfahren
+  sudo shutdown 18:20                   fahre um 18:20 Uhr herunter
+
+$ date                                  Zeige aktuelles Datum an
+
+
