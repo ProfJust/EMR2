@@ -14,6 +14,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 add_executable(talkerNode   src/minimal_publisher.cpp)
 ament_target_dependencies(talkerNode rclcpp std_msgs)
@@ -21,6 +22,9 @@ ament_target_dependencies(talkerNode rclcpp std_msgs)
 # ===>>>>> Add Executable and Dependencies ===>>>>
 add_executable(listenerNode src/minimal_subscriber.cpp)
 ament_target_dependencies(listenerNode rclcpp std_msgs)
+
+add_executable(turtlesim_taste   src/turtlesim_taste.cpp)
+ament_target_dependencies(turtlesim_taste rclcpp std_msgs geometry_msgs)
 
 target_include_directories(talkerNode PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -30,6 +34,7 @@ target_compile_features(talkerNode PUBLIC c_std_99 cxx_std_17)  # Require C99 an
 # ===>>>>> Add target ===>>>>
 install(TARGETS talkerNode
                 listenerNode
+                turtlesim_taste
   DESTINATION lib/${PROJECT_NAME})
 
 # ===>>>>> Add Folder for Launch-Files ===>>>>
