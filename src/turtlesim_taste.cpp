@@ -38,7 +38,7 @@ class TurtleSimPublisher : public rclcpp::Node
       double speed_val = 0.0;
 
       // Setze Werte für die Message
-      double speed_val = 0.2;
+      speed_val = 0.2;
       msg.linear.set__x(speed_val);
 
       /****** HIER CODE EINFÜGEN ******/
@@ -59,11 +59,14 @@ class TurtleSimPublisher : public rclcpp::Node
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  std::cout<<  " Tasten-Steurung für die TurtleSim - Druecken Sie 'W' 'A' 'S' 'D' "; //Konsolenausgabe
+  std::cout <<  " Tasten-Steurung für die TurtleSim - Druecken Sie 'W' 'A' 'S' 'D' "; //Konsolenausgabe
   rclcpp::spin(std::make_shared<TurtleSimPublisher>());
   rclcpp::shutdown();
   return 0;
 }
+
+
+
 
 // https://raw.githubusercontent.com/aarsht7/teleop_cpp_ros2/main/src/teleop_cpp_ros2.cpp
 // For non-blocking keyboard inputs
