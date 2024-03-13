@@ -9,6 +9,12 @@ git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.g
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Gazebo_Simulation.git -b humble
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git -b humble
 
+# rqt - Tools für Controller
+sudo apt install ros-humble-rqt-joint-trajectory-controller 
+sudo apt install ros-humble-rqt-joint-trajectory-controller 
+# falls es nicht in rqt zu finden ist 
+# ggf. ros2 run rqt_joint_trajectory_controller rqt_joint_trajectory_controller --force-discover
+
 cd ..
 rosdep install --ignore-src --from-paths src -y
 colcon build 
