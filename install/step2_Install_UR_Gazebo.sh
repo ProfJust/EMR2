@@ -7,10 +7,11 @@ cd ~/ur3_ws/src
 
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git -b humble
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Gazebo_Simulation.git -b humble
+git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git -b humble
 
 cd ..
 rosdep install --ignore-src --from-paths src -y
 colcon build 
 source install/local_setup.sh 
 
-ros2 launch ur_simulation_gazebo ur_sim_control.launch.py
+ros2 launch ur_simulation_gazebo ur_sim_control.launch.py ur_type=:=ur3e
