@@ -12,12 +12,12 @@ export LANG=en_US.UTF-8
 locale  # verify settings
 
 # ensure that the Ubuntu Universe repository is enabled
-sudo apt install software-properties-common
-sudo add-apt-repository universe
+sudo apt install software-properties-common -y
+sudo add-apt-repository universe -y
 
 # add the ROS 2 GPG key with apt.
-sudo apt update 
-sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt install curl -y
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
