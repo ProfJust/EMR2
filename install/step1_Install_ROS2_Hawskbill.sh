@@ -32,6 +32,7 @@ sudo apt install ros-humble-ros-base
 sudo apt install ros-dev-tools
 # für die Praktika
 sudo apt install ros-humble-turtlesim
+sudo apt install xterm   # um teleop_key -Terminal launchen zu können
 
 # Environment setup
 # Replace ".bash" with your shell if you're not using bash
