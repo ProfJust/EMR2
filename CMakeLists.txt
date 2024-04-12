@@ -27,19 +27,24 @@ ament_target_dependencies(listenerNode rclcpp std_msgs)
 add_executable(turtlesim_taste   src/turtlesim_taste.cpp)
 ament_target_dependencies(turtlesim_taste rclcpp std_msgs geometry_msgs)
 
-add_executable(hello_moveit_ur  src/hello_moveit_ur.cpp)
-ament_target_dependencies(hello_moveit_ur moveit_ros_planning_interface)
+add_executable(hello_moveit_ur_gazebo  src/hello_moveit_ur_gazebo.cpp)
+ament_target_dependencies(hello_moveit_ur_gazebo moveit_ros_planning_interface)
+
+add_executable(hello_moveit_ur_realbot src/hello_moveit_ur_realbot.cpp)
+ament_target_dependencies(hello_moveit_ur_realbot moveit_ros_planning_interface)
 
 target_include_directories(talkerNode PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
+
 target_compile_features(talkerNode PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
 # ===>>>>> Add target ===>>>>
 install(TARGETS talkerNode
                 listenerNode
                 turtlesim_taste
-                hello_moveit_ur
+                hello_moveit_ur_gazebo
+                hello_moveit_ur_realbot
   DESTINATION lib/${PROJECT_NAME})
 
 # ===>>>>> Add Folder for Launch-Files ===>>>>
