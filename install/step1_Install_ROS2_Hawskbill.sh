@@ -43,10 +43,9 @@ echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 echo 'source ~/ur3_ws/install/local_setup.bash' >> ~/.bashrc
 
 echo "alias source='source ~/ur3_ws/install/local_setup.bash'
-      alias build='cd ~/ur3_ws; colcon build --mixin release;  source ~/ur3_ws/install/local_setup.bash'
-      alias emrbuild='cd ~/ur3_ws; colcon build --packages-selec emr2;  source ~/ur3_ws/install/local_setup.bash'
-      alias gazebo='ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py'
-     "
+alias build='cd ~/ur3_ws; colcon build --mixin release;  source ~/ur3_ws/install/local_setup.bash'
+alias buildemr='cd ~/ur3_ws; colcon build --packages-select emr2;  source ~/ur3_ws/install/local_setup.bash'
+alias gazebo='ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py'     " >> ~/.bashrc
 
 
 # Install development tools and ROS tools
