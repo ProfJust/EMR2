@@ -15,25 +15,23 @@ from launch_ros.actions import Node
 from launch.event_handlers import OnProcessStart
   
 def generate_launch_description():
-     
     Node_turtlesim1 = Node(
         package="turtlesim",
         executable="turtlesim_node",
         name='turtlesim1'
     )
- 
-    # ERROR Does not work, why?
-    #[ERROR] [turtle_teleop_key-2]: process has died [pid 7973, exit code -6, cmd '/opt/ros/humble/lib/turtlesim/turtle_teleop_key --ros-args -r __node:=move_node'].
 
-    # $ ros2 run turtlesim turtle_teleop_key   runs OK
-    
     Node_teleop = Node(
         package="turtlesim",
-        executable="turtle_teleop_key",   # teleop node needs to have an access to keyboard capture and cannot be used in launch file ????
-        name='teleop_node',
-        output='screen',
-        prefix = 'xterm -e',  # dafür xterm installieren => $sudo apt install xterm
-        #https://github.com/ros2/teleop_twist_keyboard/issues/21
+        executable="turtle_teleop_key",   
+        name='teleop_node',        
+        # teleop node needs to have an access to keyboard capture and cannot be used in launch file ????
+        #[ERROR] [turtle_teleop_key-2]: process has died [pid 7973, exit code -6, 
+        #        cmd '/opt/ros/humble/lib/turtlesim/turtle_teleop_key --ros-args -r __node:=move_node'].
+        # Workaround: #https://github.com/ros2/teleop_twist_keyboard/issues/21
+        # dafür xterm installieren => $sudo apt install xterm
+        prefix = 'xterm -e',
+        output='screen',          
     )
  
     return LaunchDescription([
