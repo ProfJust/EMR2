@@ -84,4 +84,4 @@ cd ~/ur3_ws/
 # wenn schwacher PC nur mit 1 Kern kompilieren =>
 # colcon build --symlink-install --parallel-workers 1
 # source ~/turtlebot3_ws/install/local_setup.bash
-source ~/ur3_ws/install/setup.bash 
+#source ~/ur3_ws/install/setup.bash 
