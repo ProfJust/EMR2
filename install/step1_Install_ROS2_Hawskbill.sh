@@ -27,9 +27,9 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
 # Install ROS 2 packages
 sudo apt update 
 sudo apt upgrade
-sudo apt install ros-humble-desktop
-sudo apt install ros-humble-ros-base
-sudo apt install ros-dev-tools
+sudo apt install ros-humble-desktop -y
+sudo apt install ros-humble-ros-base -y
+sudo apt install ros-dev-tools -y
 # für die Praktika
 sudo apt install ros-humble-turtlesim -y
 sudo apt install xterm   # um teleop_key -Terminal launchen zu können
@@ -84,4 +84,4 @@ cd ~/ur3_ws/
 # wenn schwacher PC nur mit 1 Kern kompilieren =>
 # colcon build --symlink-install --parallel-workers 1
 # source ~/turtlebot3_ws/install/local_setup.bash
-source ~/ur3_ws/install/setup.bash
+source ~/ur3_ws/install/setup.bash 
