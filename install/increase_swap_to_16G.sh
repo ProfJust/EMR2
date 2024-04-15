@@ -1,6 +1,7 @@
 # https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04
 free -h
 df -h
+sudo swapoff /swapfile     # alten Swap ausschalten
 sudo fallocate -l 16G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
