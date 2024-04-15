@@ -41,6 +41,7 @@ sudo apt install xterm   # um teleop_key -Terminal launchen zu können
 # schon vorhanden?  mkdir -p ~/ur3_ws/src
 echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 echo 'source ~/ur3_ws/install/local_setup.bash' >> ~/.bashrc
+echo 'export ROS_LOCALHOST_ONLY=0  #keine Netzwerkverbindung' >> ~/.bashrc
 
 echo "alias source='source ~/ur3_ws/install/local_setup.bash'
 alias build='cd ~/ur3_ws; colcon build --mixin release;  source ~/ur3_ws/install/local_setup.bash'
