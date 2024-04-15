@@ -1,0 +1,115 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-84eae8ede58f5b7d3c46.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "emr2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "emr2_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-emr2_uninstall-Debug-85f7da8be5cc4c0e9ffa.json",
+					"name" : "emr2_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hello_moveit_ur_gazebo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hello_moveit_ur_gazebo-Debug-3ab82502cf9a43e25a6b.json",
+					"name" : "hello_moveit_ur_gazebo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hello_moveit_ur_realbot::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hello_moveit_ur_realbot-Debug-c3ed2cf24791fdd38bef.json",
+					"name" : "hello_moveit_ur_realbot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "listenerNode::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-listenerNode-Debug-3c58dde365cc4554c790.json",
+					"name" : "listenerNode",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "talkerNode::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-talkerNode-Debug-1be8b27077671afcb271.json",
+					"name" : "talkerNode",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "turtlesim_taste::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-turtlesim_taste-Debug-e7713b91ba220afff0c5.json",
+					"name" : "turtlesim_taste",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-37af41505c41dd611a2a.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/oj/ur3_ws/src/emr2/build",
+		"source" : "/home/oj/ur3_ws/src/emr2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

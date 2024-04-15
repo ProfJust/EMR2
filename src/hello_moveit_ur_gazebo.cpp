@@ -6,6 +6,22 @@ $1 ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py
 $3 ros2 run  emr2 hello_moveit_ur 
 */
 
+/* Ergänze im File  
+ ~/ur3_ws/src/Universal_Robots_ROS2_Drivere/ur_moveit_config/launch/ur_moveit.launch.py
+ ca. ab Zeile 184
+ planning_scene_monitor_parameters = {
+        "publish_planning_scene": True,
+        "publish_geometry_updates": True,
+        "publish_state_updates": True,
+        "publish_transforms_updates": True,
+        "publish_robot_description": True,
+        "publish_robot_description_semantic": True,
+    }
+
+  Don't forget to rebuild ans source !!!!  
+*/
+
+
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
 #include <moveit/move_group_interface/move_group_interface.h>

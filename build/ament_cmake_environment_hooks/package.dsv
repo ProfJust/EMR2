@@ -1,0 +1,4 @@
+source;share/emr2/local_setup.bash
+source;share/emr2/local_setup.dsv
+source;share/emr2/local_setup.sh
+source;share/emr2/local_setup.zsh
