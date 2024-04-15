@@ -31,7 +31,7 @@ sudo apt install ros-humble-desktop
 sudo apt install ros-humble-ros-base
 sudo apt install ros-dev-tools
 # für die Praktika
-sudo apt install ros-humble-turtlesim
+sudo apt install ros-humble-turtlesim -y
 sudo apt install xterm   # um teleop_key -Terminal launchen zu können
 
 # Environment setup
@@ -66,7 +66,7 @@ sudo apt install -y \
    python3-pytest-repeat \
    python3-pytest-rerunfailures
 
-  pip install -U setuptools
+  pip install -U setuptools -y
    
 
 #  ?????????????????? wo kommt das her?
