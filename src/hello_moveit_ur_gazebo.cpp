@@ -18,7 +18,7 @@ $3 ros2 run  emr2 hello_moveit_ur
         "publish_robot_description_semantic": True,
     }
 
-  Don't forget to rebuild ans source !!!!  
+  Don't forget to save, rebuild ans source !!!!  
 */
 
 
