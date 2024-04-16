@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "hello_moveit_ur_realbot"
+			"path" : "hello_moveit_ur_gazebo"
 		}
 	],
 	"backtrace" : 1,
@@ -30,19 +30,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 36,
+				"line" : 34,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 46,
+				"line" : 47,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 37,
+				"line" : 35,
 				"parent" : 0
 			},
 			{
@@ -479,7 +479,7 @@
 			]
 		}
 	],
-	"id" : "hello_moveit_ur_realbot::@6890427a1f51a3e7e1df",
+	"id" : "hello_moveit_ur_gazebo::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -1556,8 +1556,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "hello_moveit_ur_realbot",
-	"nameOnDisk" : "hello_moveit_ur_realbot",
+	"name" : "hello_moveit_ur_gazebo",
+	"nameOnDisk" : "hello_moveit_ur_gazebo",
 	"paths" : 
 	{
 		"build" : ".",
@@ -1578,7 +1578,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/hello_moveit_ur_realbot.cpp",
+			"path" : "src/hello_moveit_ur_gazebo.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

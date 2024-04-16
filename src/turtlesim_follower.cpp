@@ -23,13 +23,14 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "geometry_msgs/msg/twist.hpp"  //Type of cmd_vel
-//#include "turtlesim/msg/pose.hpp"
 #include <turtlesim/msg/pose.hpp>
+// CMakeList add_executable(turtlesim_follower   src/turtlesim_follower.cpp)
+//           ament_target_dependencies(turtlesim_follower rclcpp std_msgs geometry_msgs turtlesim)
 //#include "/opt/ros/humble/include/turtlesim/turtlesim/msg/pose.hpp"
 // See Directory /opt/ros/humble/include/turtlesim/turtlesim/msg
 
-//#include "turtlesim/msg/color.hpp"  //color_sensor
-// #include "turtlesim/msg/pose.hpp"
+#include <turtlesim/msg/color.hpp> //color_sensor
+
 // #include "turtlesim/srv/spawn.hpp"
 // https://github.com/siksal/turtle_control/blob/main/src/catch_turtle.cpp
 
@@ -44,9 +45,8 @@ class TurtleSimNode: public rclcpp::Node
     TurtleSimNode(): Node("turtlesim_follower"), count_(0)
     {   
       cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/turtle2/cmd_vel", 10);
-      //sensor_sub_ = this->create_subscription<turtlesim_msgs::msg::Color>("topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
-      //pose_subscriber_ = this->create_subscription<turtlesim::msg::Pose>(
-      //      "turtle1/pose", 10, std::bind(&TurtleSimNode::callbackTurtlePose, this, std::placeholders::_1));
+      color_subscriber_ = this->create_subscription<turtlesim::msg::Color>("turtle2/color", 10, std::bind(&TurtleSimNode::color_callback,    this, std::placeholders::_1));
+      pose_subscriber_  = this->create_subscription<turtlesim::msg::Pose> ("turtle1/pose",  10, std::bind(&TurtleSimNode::callbackTurtlePose, this, std::placeholders::_1));
       timer_ = this->create_wall_timer(500ms, std::bind(&TurtleSimNode::timer_callback, this));
     }
 
@@ -57,7 +57,7 @@ class TurtleSimNode: public rclcpp::Node
       auto msg = geometry_msgs::msg::Twist();  // instanziert Twist - Object 
 
       // Hole Taste
-      char key = getch();
+      //char key = getch();
       double speed_val = 0.0;
 
       // Setze Werte für die Message
@@ -71,17 +71,25 @@ class TurtleSimNode: public rclcpp::Node
       RCLCPP_INFO(this->get_logger(), "Publishing angular Z : '%f'", msg.angular.z); //Konsolenausgabe
     }
 
-    /*void callbackTurtlePose(const turtlesim::msg::Pose::SharedPtr msg)
+    void callbackTurtlePose(const turtlesim::msg::Pose::SharedPtr msg)
     {
         this->pose_ = *msg;
-    }*/
+    }
+
+    void color_callback(const turtlesim::msg::Color::SharedPtr msg)
+    {
+        this->color_ = *msg;
+    }
   
   private:  //Klassenvariablen
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     rclcpp::Subscription<turtlesim::msg::Pose>::SharedPtr pose_subscriber_;
+    rclcpp::Subscription<turtlesim::msg::Color>::SharedPtr color_subscriber_;
     size_t count_;
     turtlesim::msg::Pose pose_;
+    turtlesim::msg::Color color_;
+
 
 };
 

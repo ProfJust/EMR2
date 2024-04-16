@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "turtlesim_follower"
+			"path" : "turtlesim_taste"
 		}
 	],
 	"backtrace" : 1,
@@ -30,19 +30,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 30,
+				"line" : 28,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 46,
+				"line" : 47,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 31,
+				"line" : 29,
 				"parent" : 0
 			},
 			{
@@ -242,7 +242,7 @@
 			]
 		}
 	],
-	"id" : "turtlesim_follower::@6890427a1f51a3e7e1df",
+	"id" : "turtlesim_taste::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -577,8 +577,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "turtlesim_follower",
-	"nameOnDisk" : "turtlesim_follower",
+	"name" : "turtlesim_taste",
+	"nameOnDisk" : "turtlesim_taste",
 	"paths" : 
 	{
 		"build" : ".",
@@ -599,7 +599,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/turtlesim_follower.cpp",
+			"path" : "src/turtlesim_taste.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

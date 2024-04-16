@@ -2803,7 +2803,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/opt/ros/humble/lib/libstd_srvs__rosidl_typesupport_fastrtps_cpp.so"
+			"value" : "/opt/ros/humble/lib/libturtlesim__rosidl_typesupport_fastrtps_cpp.so"
 		},
 		{
 			"name" : "action_msgs_DIR",
@@ -4600,6 +4600,18 @@
 			],
 			"type" : "PATH",
 			"value" : "/opt/ros/humble/share/trajectory_msgs/cmake"
+		},
+		{
+			"name" : "turtlesim_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for turtlesim."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/ros/humble/share/turtlesim/cmake"
 		},
 		{
 			"name" : "unique_identifier_msgs_DIR",

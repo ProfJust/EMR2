@@ -16,6 +16,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
+find_package(turtlesim REQUIRED)
 
 add_executable(talkerNode   src/minimal_publisher.cpp)
 ament_target_dependencies(talkerNode rclcpp std_msgs)
@@ -28,7 +29,7 @@ add_executable(turtlesim_taste   src/turtlesim_taste.cpp)
 ament_target_dependencies(turtlesim_taste rclcpp std_msgs geometry_msgs)
 
 add_executable(turtlesim_follower   src/turtlesim_follower.cpp)
-ament_target_dependencies(turtlesim_follower rclcpp std_msgs geometry_msgs)
+ament_target_dependencies(turtlesim_follower rclcpp std_msgs geometry_msgs turtlesim)
 
 add_executable(hello_moveit_ur_gazebo  src/hello_moveit_ur_gazebo.cpp)
 ament_target_dependencies(hello_moveit_ur_gazebo moveit_ros_planning_interface)
