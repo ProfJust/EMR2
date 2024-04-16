@@ -3,6 +3,7 @@
 /home/oj/ur3_ws/src/emr2/build/CMakeFiles/talkerNode.dir
 /home/oj/ur3_ws/src/emr2/build/CMakeFiles/listenerNode.dir
 /home/oj/ur3_ws/src/emr2/build/CMakeFiles/turtlesim_taste.dir
+/home/oj/ur3_ws/src/emr2/build/CMakeFiles/turtlesim_follower.dir
 /home/oj/ur3_ws/src/emr2/build/CMakeFiles/hello_moveit_ur_gazebo.dir
 /home/oj/ur3_ws/src/emr2/build/CMakeFiles/hello_moveit_ur_realbot.dir
 /home/oj/ur3_ws/src/emr2/build/CMakeFiles/test.dir

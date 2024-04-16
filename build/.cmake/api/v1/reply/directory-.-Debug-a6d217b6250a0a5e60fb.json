@@ -36,19 +36,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 43,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 51,
+				"line" : 55,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 66,
+				"line" : 70,
 				"parent" : 0
 			},
 			{
@@ -262,6 +262,18 @@
 				"turtlesim_taste"
 			],
 			"targetId" : "turtlesim_taste::@6890427a1f51a3e7e1df",
+			"targetIndex" : 6,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib/emr2",
+			"paths" : 
+			[
+				"turtlesim_follower"
+			],
+			"targetId" : "turtlesim_follower::@6890427a1f51a3e7e1df",
 			"targetIndex" : 5,
 			"type" : "target"
 		},

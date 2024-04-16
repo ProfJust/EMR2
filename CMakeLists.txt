@@ -27,6 +27,9 @@ ament_target_dependencies(listenerNode rclcpp std_msgs)
 add_executable(turtlesim_taste   src/turtlesim_taste.cpp)
 ament_target_dependencies(turtlesim_taste rclcpp std_msgs geometry_msgs)
 
+add_executable(turtlesim_follower   src/turtlesim_follower.cpp)
+ament_target_dependencies(turtlesim_follower rclcpp std_msgs geometry_msgs)
+
 add_executable(hello_moveit_ur_gazebo  src/hello_moveit_ur_gazebo.cpp)
 ament_target_dependencies(hello_moveit_ur_gazebo moveit_ros_planning_interface)
 
@@ -43,6 +46,7 @@ target_compile_features(talkerNode PUBLIC c_std_99 cxx_std_17)  # Require C99 an
 install(TARGETS talkerNode
                 listenerNode
                 turtlesim_taste
+                turtlesim_follower
                 hello_moveit_ur_gazebo
                 hello_moveit_ur_realbot
   DESTINATION lib/${PROJECT_NAME})
