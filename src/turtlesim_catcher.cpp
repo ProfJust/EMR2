@@ -4,11 +4,12 @@
 // In TurtleSim spawnt eine zweite Turtle2 an einer zufälligen Stelle und 
 // fährt an die Pose (Goal-Pose) der ersten Turtle1.
 // Sobald die erste Turtle1 erreicht ist, wird sie gekillt
-// Eine neue Turtle1 wird gespawant und die Turtle2 fährt dorthin und killt sie
+// Eine neue Turtle1 an einer anderen zufälligen Stelle wird gespawnt
+// und die Turtle2 fährt dorthin und killt auch sie ...
 
 
 // usage: $1 ros2 run turtlesim turtlesim_node
-//        $2 ros2 run emr2 turtlesim_follower    
+//        $2 ros2 run emr2 turtlesim_catcher    
 
 #define _USE_MATH_FUNCTIONS
 #include <random>
@@ -39,8 +40,8 @@ double pose_theta;
 const std::string turtle_prefix = "turtle_"; //Vorsilbe für alle Turtles
 const double tolerance = 0.6;
 
-bool spawn_first = true;
-bool stop = false;
+bool spawn_first_flag = true;
+bool stop_flag = false;
 
 std::random_device rd;  //C++11 integer random number generator
 std::mt19937 gen(rd()); 
@@ -152,17 +153,18 @@ class TurtleCatcher : public rclcpp::Node
         // go_to_goal ist eine Zustandautomat der regelmäßig vom Timer getriggert wird
         void go_to_goal()
         {   
-            // Noch keine zweite Turtle gespawnt
-            if(spawn_first == true){
+            // Noch keine zweite Turtle gespawnt => spawne
+            if(spawn_first_flag == true){
                 count = 1;
                 gpose.x = dist1(gen);
                 gpose.y = dist1(gen);
                 gpose.theta = dist2(gen);
                 spawn_turtle(gpose);
-                spawn_first = false;
+                spawn_first_flag = false;
             }
 
-            if(euclidean_dist(gpose) >= tolerance && spawn_first == false){
+            // zur Turtle1 laufen 
+            if(euclidean_dist(gpose) >= tolerance && spawn_first_flag == false){
                 vel_msg.linear.x = linear_vel(gpose);
                 vel_msg.linear.y = 0.0;
                 vel_msg.linear.z = 0.0;
@@ -174,21 +176,22 @@ class TurtleCatcher : public rclcpp::Node
                 vel_pub->publish(vel_msg);
             }
 
-            if(euclidean_dist(gpose) < tolerance && spawn_first == false){
+            //Turtle1 erreicht
+            if(euclidean_dist(gpose) < tolerance && spawn_first_flag == false){
                 vel_msg.linear.x = 0.0;
                 vel_msg.angular.z = 0.0;
                 vel_pub->publish(vel_msg);
-                stop = true;
+                stop_flag = true;
             }
-
-            if(stop == true){
+            // Kill Turtle1
+            if(stop_flag == true){
                 kill_turtle();
                 gpose.x = dist1(gen);
                 gpose.y = dist1(gen);
                 gpose.theta = dist2(gen);
                 count++;
                 spawn_turtle(gpose);
-                stop = false;
+                stop_flag = false;
             }
         }
 };
