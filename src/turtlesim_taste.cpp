@@ -1,6 +1,6 @@
 // emr2 - P02 - TurtleSim WASD-Steurung
 // Vorgabe - zu vervollständigen
-// OJ am 11.03.2024
+// OJ am 19.04.2024
 //---------------------------------------------
 
 #include <cstdio>
@@ -24,11 +24,11 @@ class TurtleSimPublisher : public rclcpp::Node
     TurtleSimPublisher(): Node("turtlesim_publisher"), count_(0)
     {   
       cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-      timer_ = this->create_wall_timer(500ms, std::bind(&TurtleSimPublisher::timer_callback, this));
+      timer_pub_ = this->create_wall_timer(500ms, std::bind(&TurtleSimPublisher::timer_pub_callback, this));
     }
 
   private:
-    void timer_callback()  //Wird vom Timer alle 500ms aufgerufen
+    void timer_pub_callback()  //Wird vom Timer alle 500ms aufgerufen
     {
       // auto => automatischen Speicherklasse, d. h. eine Variable mit lokaler Lebensdauer
       auto msg = geometry_msgs::msg::Twist();  // instanziert Twist - Object 
@@ -49,7 +49,7 @@ class TurtleSimPublisher : public rclcpp::Node
     }
   
   private:  //Klassenvariablen
-    rclcpp::TimerBase::SharedPtr timer_;
+    rclcpp::TimerBase::SharedPtr timer_pub_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     size_t count_;
 };
