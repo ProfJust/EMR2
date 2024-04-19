@@ -34,7 +34,7 @@ class TurtleSimPublisher : public rclcpp::Node
       auto msg = geometry_msgs::msg::Twist();  // instanziert Twist - Object 
 
       // Hole Taste
-      char key = getch();
+      //char key = getch();
       double speed_val = 0.0;
 
       // Setze Werte für die Message
