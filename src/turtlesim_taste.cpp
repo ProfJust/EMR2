@@ -34,7 +34,7 @@ class TurtleSimPublisher : public rclcpp::Node
       auto msg = geometry_msgs::msg::Twist();  // instanziert Twist - Object 
 
       // Hole Taste
-      //char key = getch();
+      char key = getch();
       double speed_val = 0.0;
 
       // Setze Werte für die Message
@@ -42,6 +42,8 @@ class TurtleSimPublisher : public rclcpp::Node
       msg.linear.set__x(speed_val);
 
       /****** HIER CODE EINFÜGEN ******/
+
+
 
       cmd_pub_->publish(msg);   // Sende Nachricht ins ROS2
       RCLCPP_INFO(this->get_logger(), "Publishing linear X : '%f'", msg.linear.x); //Konsolenausgabe
