@@ -1,15 +1,12 @@
-// emr2 - P02 - TurtleSim WASD-Steurung
-// Vorgabe - zu vervollständigen
-// OJ am 19.04.2024
-//---------------------------------------------
-
 #include <cstdio>
+
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
+// https://docs.ros2.org/beta3/api/rclcpp/classrclcpp_1_1node_1_1Node.html
 #include "std_msgs/msg/string.hpp"
 #include "geometry_msgs/msg/twist.hpp"  //Type of cmd_vel
 
@@ -23,11 +20,32 @@ class TurtleSimPublisher : public rclcpp::Node
    //Konstruktor
     TurtleSimPublisher(): Node("turtlesim_publisher"), count_(0)
     {   
+      // Parameter ------------------
+      // https://foxglove.dev/blog/how-to-use-ros2-parameters 
+      // https://roboticsbackend.com/rclcpp-params-tutorial-get-set-ros2-params-with-cpp/
+      declare_parameter("speed", 0.2);  // default to 0.2 (double)   
+      //get_parameter("speed", speed_param_);  
+      //std::cout << "\n turtlespeed_param is set to "<< speed_param_; 
+      // Timer for updating parameter 
+      timer_param_ = this->create_wall_timer(1000ms, std::bind(&TurtleSimPublisher::timer_param_callback, this));
+     
+      // run and set param
+      // $ ros2 run emr2 turtlesim_taste --ros-args -p speed:=0.4
+      // ros2 param list  => Exception while calling service of node '/turtlesim_publisher': None
+      // get value of param: $ ros2 param get /turtlesim_publisher speed   
+      // set value of param: $ ros2 param set /turtlesim_publisher speed 0.3    
+
       cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
       timer_pub_ = this->create_wall_timer(500ms, std::bind(&TurtleSimPublisher::timer_pub_callback, this));
     }
 
   private:
+    void timer_param_callback()  //Wird vom Timer alle 500ms aufgerufen
+    {
+      get_parameter("speed", speed_param_);  
+      std::cout << "\n turtlespeed_param is set to "<< speed_param_;    
+    }
+
     void timer_pub_callback()  //Wird vom Timer alle 500ms aufgerufen
     {
       // auto => automatischen Speicherklasse, d. h. eine Variable mit lokaler Lebensdauer
@@ -35,15 +53,19 @@ class TurtleSimPublisher : public rclcpp::Node
 
       // Hole Taste
       char key = getch();
-      double speed_val = 0.0;
+      double speed_val = speed_param_;  //0.2
+      
 
-      // Setze Werte für die Message
-      speed_val = 0.2;
-      msg.linear.set__x(speed_val);
-
-      /****** HIER CODE EINFÜGEN ******/
-
-
+      switch(key){
+        case 'w':
+          msg.linear.set__x(speed_val); break;
+        case 's':
+         msg.linear.set__x(-speed_val); break;
+        case 'a':
+          msg.angular.set__z(speed_val); break;
+        case 'd':
+          msg.angular.set__z(-speed_val); break;
+      }
 
       cmd_pub_->publish(msg);   // Sende Nachricht ins ROS2
       RCLCPP_INFO(this->get_logger(), "Publishing linear X : '%f'", msg.linear.x); //Konsolenausgabe
@@ -52,8 +74,12 @@ class TurtleSimPublisher : public rclcpp::Node
   
   private:  //Klassenvariablen
     rclcpp::TimerBase::SharedPtr timer_pub_;
+    rclcpp::TimerBase::SharedPtr timer_param_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     size_t count_;
+    
+    double speed_param_ = 0.0;
+    
 };
 
 
@@ -61,14 +87,11 @@ class TurtleSimPublisher : public rclcpp::Node
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  std::cout <<  " Tasten-Steurung für die TurtleSim - Druecken Sie 'W' 'A' 'S' 'D' "; //Konsolenausgabe
+  std::cout<<  " Tasten-Steurung für die TurtleSim - Druecken Sie 'W' 'A' 'S' 'D' "; //Konsolenausgabe
   rclcpp::spin(std::make_shared<TurtleSimPublisher>());
   rclcpp::shutdown();
   return 0;
 }
-
-
-
 
 // https://raw.githubusercontent.com/aarsht7/teleop_cpp_ros2/main/src/teleop_cpp_ros2.cpp
 // For non-blocking keyboard inputs
