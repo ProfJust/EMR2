@@ -30,7 +30,8 @@ class TurtleSimPublisher : public rclcpp::Node
       timer_param_ = this->create_wall_timer(1000ms, std::bind(&TurtleSimPublisher::timer_param_callback, this));
      
       // run and set param
-      // $ ros2 run emr2 turtlesim_taste --ros-args -p speed:=0.4
+      // $1 ros2 run turtlesim turtlesim_node 
+      // $2 ros2 run emr2 turtlesim_taste --ros-args -p speed:=0.4
       // ros2 param list  => Exception while calling service of node '/turtlesim_publisher': None
       // get value of param: $ ros2 param get /turtlesim_publisher speed   
       // set value of param: $ ros2 param set /turtlesim_publisher speed 0.3    
