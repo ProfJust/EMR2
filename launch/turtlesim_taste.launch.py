@@ -22,8 +22,8 @@ def generate_launch_description():
     )
 
     Node_teleop = Node(
-        package="turtlesim",
-        executable="turtle_teleop_key",   
+        package="emr2",
+        executable="turtlesim_taste",   
         name='teleop_node',        
         # teleop node needs to have an access to keyboard capture and cannot be used in launch file ????
         #[ERROR] [turtle_teleop_key-2]: process has died [pid 7973, exit code -6, 

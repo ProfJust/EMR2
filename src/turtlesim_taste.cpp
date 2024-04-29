@@ -1,5 +1,4 @@
 #include <cstdio>
-
 #include <chrono>
 #include <functional>
 #include <memory>
@@ -27,7 +26,7 @@ class TurtleSimPublisher : public rclcpp::Node
       //get_parameter("speed", speed_param_);  
       //std::cout << "\n turtlespeed_param is set to "<< speed_param_; 
       // Timer for updating parameter 
-      timer_param_ = this->create_wall_timer(1000ms, std::bind(&TurtleSimPublisher::timer_param_callback, this));
+      timer_param_ = this->create_wall_timer(200ms, std::bind(&TurtleSimPublisher::timer_param_callback, this));
      
       // run and set param
       // $1 ros2 run turtlesim turtlesim_node 
@@ -53,7 +52,7 @@ class TurtleSimPublisher : public rclcpp::Node
       auto msg = geometry_msgs::msg::Twist();  // instanziert Twist - Object 
 
       // Hole Taste
-      char key = getch();
+      char key = 0; //getch();
       double speed_val = speed_param_;  //0.2
       
 
@@ -77,10 +76,8 @@ class TurtleSimPublisher : public rclcpp::Node
     rclcpp::TimerBase::SharedPtr timer_pub_;
     rclcpp::TimerBase::SharedPtr timer_param_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
-    size_t count_;
-    
+    size_t count_;    
     double speed_param_ = 0.0;
-    
 };
 
 
