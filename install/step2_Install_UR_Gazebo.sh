@@ -8,6 +8,11 @@ cd ~/ur3_ws/src
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git -b humble
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Gazebo_Simulation.git -b humble
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git -b humble
+git clone https://github.com/PickNikRobotics/ros2_robotiq_gripper.git -y
+#git clone https://github.com/RoverRobotics-forks/serial-ros2.git-y
+git clone https://github.com/tylerjw/serial.git -b ros2
+# coming from meta issue https://github.com/PickNikRobotics/ros2_robotiq_gripper/issues/21
+
 
 # rqt - Tools für Controller
 sudo apt install ros-humble-rqt-joint-trajectory-controller -y
