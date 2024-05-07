@@ -27,9 +27,9 @@ cd ~/ur3_ws
 colcon build --mixin release   # nur so compiliert es, ohne mixin => fail
 
 # Ergänze .bashrc
-echo 'alias so='source ~/ur3_ws/install/local_setup.bash'' >> ~/.bashrc
-echo 'alias co='colcon build --mixin release''             >> ~/.bashrc
-echo 'alias ce='colcon build --packages-select emr2' >> ~/.bashrc
+# echo 'alias so='source ~/ur3_ws/install/local_setup.bash'' >> ~/.bashrc
+# echo 'alias co='colcon build --mixin release''             >> ~/.bashrc
+# echo 'alias ce='colcon build --packages-select emr2' >> ~/.bashrc
 
 # change to Cyclone DDS 
 sudo apt install ros-humble-rmw-cyclonedds-cpp -y
