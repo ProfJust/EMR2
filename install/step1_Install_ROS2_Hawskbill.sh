@@ -44,6 +44,9 @@ echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 echo 'source ~/ur3_ws/install/local_setup.bash' >> ~/.bashrc
 echo 'export ROS_LOCALHOST_ONLY=0  #keine Netzwerkverbindung' >> ~/.bashrc
 
+sudo apt install ros-humble-rmw-cyclonedds-cpp -y
+echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
+
 echo "alias source='source ~/ur3_ws/install/local_setup.bash'
 alias build='cd ~/ur3_ws; colcon build --mixin release;  source ~/ur3_ws/install/local_setup.bash'
 alias buildemr='cd ~/ur3_ws; colcon build --packages-select emr2;  source ~/ur3_ws/install/local_setup.bash'
