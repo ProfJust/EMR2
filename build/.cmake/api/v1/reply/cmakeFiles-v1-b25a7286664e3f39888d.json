@@ -7975,6 +7975,22 @@
 		},
 		{
 			"isExternal" : true,
+			"path" : "/opt/ros/humble/share/tf2/cmake/tf2Config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/ros/humble/share/tf2/cmake/tf2Config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/ros/humble/share/tf2_ros/cmake/tf2_rosConfig-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/ros/humble/share/tf2_ros/cmake/tf2_rosConfig.cmake"
+		},
+		{
+			"isExternal" : true,
 			"path" : "/opt/ros/humble/share/ament_lint_auto/cmake/ament_lint_autoConfig-version.cmake"
 		},
 		{
