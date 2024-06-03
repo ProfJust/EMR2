@@ -78,24 +78,19 @@ void setup() {
 
   msg.data = 0;
 
-  // start continuous ranging
- // lox.startRangeContinuous();
- lox.begin();
+  lox.begin();
 }
 
 void loop() {
-//  if (lox.isRangeComplete()) {
-//    // read data from Sensor
-//    msg.data++;  // lox.readRange();
-//  }
 
    VL53L0X_RangingMeasurementData_t measure;
    lox.rangingTest(&measure, false); // pass in 'true' to get debug data printout!
+
    if (measure.RangeStatus != 4) {  // phase failures have incorrect data
     msg.data = measure.RangeMilliMeter;
   }
   else{
-    msg.data++; 
+    msg.data=0; 
   }
   
   delay(100);
