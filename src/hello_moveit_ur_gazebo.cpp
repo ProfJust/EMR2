@@ -15,7 +15,7 @@ $ ros2 topic echo /rviz_moveit_motion_planning_display/robot_interaction_interac
 */
 
 /* Ergänze im File  
- ~/ur3_ws/src/Universal_Robots_ROS2_Drivere/ur_moveit_config/launch/ur_moveit.launch.py
+ ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/launch/ur_moveit.launch.py
  ca. ab Zeile 184
  planning_scene_monitor_parameters = {
         "publish_planning_scene": True,
