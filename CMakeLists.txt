@@ -16,8 +16,10 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
-find_package(turtlesim REQUIRED)
+find_package(moveit_visual_tools REQUIRED)
+find_package(graph_msgs REQUIRED)
 
+find_package(turtlesim REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 
@@ -46,6 +48,10 @@ ament_target_dependencies(hello_moveit_ur_gazebo moveit_ros_planning_interface)
 add_executable(hello_moveit_ur_realbot src/hello_moveit_ur_realbot.cpp)
 ament_target_dependencies(hello_moveit_ur_realbot moveit_ros_planning_interface)
 
+add_executable(moveit_ur_gazebo_scene   src/moveit_ur_gazebo_scene.cpp)
+ament_target_dependencies(moveit_ur_gazebo_scene rclcpp std_msgs moveit_ros_planning_interface moveit_visual_tools graph_msgs )
+
+
 target_include_directories(talkerNode PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -60,6 +66,7 @@ install(TARGETS talkerNode
                 hello_moveit_ur_gazebo
                 hello_moveit_ur_realbot
                 tf_broadcaster 
+                moveit_ur_gazebo_scene
   DESTINATION lib/${PROJECT_NAME})
 
 # ===>>>>> Add Folder for Launch-Files ===>>>>
