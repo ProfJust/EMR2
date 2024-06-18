@@ -18,10 +18,14 @@ git clone https://github.com/tylerjw/serial.git -b ros2
 #old try #git clone https://github.com/RoverRobotics-forks/serial-ros2.git-y
 
 # rqt - Tools für Controller
-sudo apt install ros-humble-rqt-joint-trajectory-controller -y
-sudo apt install ros-humble-rqt-joint-trajectory-controller -y
-sudo apt install ros-humble-joint-trajectory-controller -y
-sudo apt install ros-humble-control-toolbox -y
+sudo apt install ros-jazzy-joint-trajectory-controller -y
+sudo apt install ros-jazzy-rqt-joint-trajectory-controller -y
+sudo apt install ros-jazzy-rqt-joint-trajectory-controller -y
+sudo apt install ros-jazzy-joint-trajectory-controller -y
+sudo apt install ros-jazzy-control-toolbox -y
+# Universal Robot - Dependencies
+sudo apt install ros-jazzy-ur-msgs -y
+sudo apt install ros-jazzy-ur-client-library
 
 
 # falls es nicht in rqt zu finden ist 
@@ -32,7 +36,7 @@ rosdep install --ignore-src --from-paths src -y
 rosdep update
 
 colcon build 
-source install/local_setup.sh 
+source ~/ur3_ws/install/setup.bash 
 
 # ros2 launch ur_simulation_gazebo ur_sim_control.launch.py ur_type=:=ur3e
 ros2 launch ur_simulation_gz ur_sim_control.launch.py
