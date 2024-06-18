@@ -94,11 +94,146 @@ ergänze ca. ab Zeile 189
 // and inside the namespace with the narrowest scope (if there is one)
 static const rclcpp::Logger LOGGER = rclcpp::get_logger("move_group_demo");
 
+
+
+int main(int argc, char * argv[])
+{
+  // Initialize ROS 
+  rclcpp::init(argc, argv);
+  
+  auto node = rclcpp::Node::make_shared("move_group_node");
+  
+  auto move_group_if = moveit::planning_interface::MoveGroupInterface(node, "ur_manipulator");
+  
+  //======= Create collision object for the robot to avoid ================
+  auto const collision_object = [frame_id =
+                                 move_group_if.getPlanningFrame()] {
+  moveit_msgs::msg::CollisionObject collision_object;
+  collision_object.header.frame_id = frame_id;
+  collision_object.id = "box1";
+  shape_msgs::msg::SolidPrimitive primitive;
+
+  // Define the size of the box in meters
+  primitive.type = primitive.BOX;
+  primitive.dimensions.resize(3);
+  primitive.dimensions[primitive.BOX_X] = 2.0;
+  primitive.dimensions[primitive.BOX_Y] = 2.0;
+  primitive.dimensions[primitive.BOX_Z] = 0.05;
+
+  // Define the pose of the box (relative to the frame_id)
+  geometry_msgs::msg::Pose box_pose;
+  box_pose.orientation.w = 1.0;  // We can leave out the x, y, and z components of the quaternion since they are initialized to 0
+  box_pose.position.x = 0.0;
+  box_pose.position.y = 0.0;
+  box_pose.position.z = -0.05;
+
+  collision_object.primitives.push_back(primitive);
+  collision_object.primitive_poses.push_back(box_pose);
+  collision_object.operation = collision_object.ADD;
+
+  return collision_object;
+}();
+
+// Add the collision object to the scene
+moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+planning_scene_interface.applyCollisionObject(collision_object);
+
+//======= Ende Create collision object for the robot to avoid ================
+
+//======= Create collision object2 for the robot to avoid ================
+  auto const collision_object2 = [frame_id =
+                                 move_group_if.getPlanningFrame()] {
+  moveit_msgs::msg::CollisionObject collision_object;
+  collision_object.header.frame_id = frame_id;
+  collision_object.id = "box2";
+  shape_msgs::msg::SolidPrimitive primitive;
+
+  // Define the size of the box in meters
+  primitive.type = primitive.BOX;
+  primitive.dimensions.resize(3);
+  primitive.dimensions[primitive.BOX_X] = 0.5;
+  primitive.dimensions[primitive.BOX_Y] = 0.1;
+  primitive.dimensions[primitive.BOX_Z] = 0.5;
+
+  // Define the pose of the box (relative to the frame_id)
+  geometry_msgs::msg::Pose box_pose;
+  box_pose.orientation.w = 1.0;  // We can leave out the x, y, and z components of the quaternion since they are initialized to 0
+  box_pose.position.x = 0.50;
+  box_pose.position.y = 0.05;
+  box_pose.position.z = 0.10;
+
+  collision_object.primitives.push_back(primitive);
+  collision_object.primitive_poses.push_back(box_pose);
+  collision_object.operation = collision_object.ADD;
+
+  return collision_object;
+}();
+
+// Add the collision object to the scene
+planning_scene_interface.applyCollisionObject(collision_object2);
+
+//======= Ende Create collision object 2 for the robot to avoid ================
+
+// Example usage: Planning to a pose goal  links
+    geometry_msgs::msg::Pose target_pose;
+    
+    target_pose.position.x = 0.430062481050122;
+    target_pose.position.y =  -0.2579749978766989;
+    target_pose.position.z =  0.05178436319549405;
+    
+    target_pose.orientation.x = 0.7545013809640476;
+    target_pose.orientation.y = 0.6554364813123178;
+    target_pose.orientation.z = 0.03339098236178074;
+    target_pose.orientation.w = 0.00396577674461157;  
+
+    
+    move_group_if.setPoseTarget(target_pose);
+
+    // Plan and execute the motion
+    auto success = move_group_if.move();
+
+    if (success) {
+        RCLCPP_INFO(node->get_logger(), "Motion plan executed successfully.");
+    } else {
+        RCLCPP_WARN(node->get_logger(), "Failed to execute motion plan.");
+    }
+
+
+// Example usage: Planning to a pose goal  rechts
+    geometry_msgs::msg::Pose target_pose2;
+    
+    target_pose2.position.x = 0.377683022382355;
+    target_pose2.position.y =  0.36295139059796666;
+    target_pose2.position.z =  0.07731902401950548;
+    
+    target_pose2.orientation.x = 0.9986775494236672;
+    target_pose2.orientation.y = 0.04132776618063188;
+    target_pose2.orientation.z = 0.004863633653554314;
+    target_pose2.orientation.w = -0.030191275020145944;  
+   
+    move_group_if.setPoseTarget(target_pose2);
+
+    // Plan and execute the motion
+    auto success2 = move_group_if.move();
+
+    if (success2) {
+        RCLCPP_INFO(node->get_logger(), "Motion plan executed successfully.");
+    } else {
+        RCLCPP_WARN(node->get_logger(), "Failed to execute motion plan.");
+    }
+
+    // Shutdown ROS 2
+    rclcpp::shutdown();
+    return 0;
+}
+
+/*
+
 int main(int argc, char** argv)
 {
   rclcpp::init(argc, argv);
   rclcpp::NodeOptions node_options;
-  node_options.automatically_declare_parameters_from_overrides(false);  //OJU was true
+  node_options.automatically_declare_parameters_from_overrides(true);  
   // see https://docs.ros.org/en/rolling/p/rclcpp/generated/classrclcpp_1_1NodeOptions.html
   auto move_group_node = rclcpp::Node::make_shared("move_group_interface_tutorial", node_options);
 
@@ -128,10 +263,9 @@ int main(int argc, char** argv)
   // class to add and remove collision objects in our "virtual world" scene
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
 
-  //==> Erzeugt Probleme  [ERROR] [1717757196.516282532] [move_group_interface]: Failed to fetch current robot state
-  // Raw pointers are frequently used to refer to the planning group for improved performance.
-     const moveit::core::JointModelGroup* joint_model_group; // =
-  //     move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
+ // Raw pointers are frequently used to refer to the planning group for improved performance.
+     const moveit::core::JointModelGroup* joint_model_group; 
+     move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
 
   // Visualization
   // ^^^^^^^^^^^^^
@@ -157,7 +291,7 @@ int main(int argc, char** argv)
   // // ^^^^^^^^^^^^^^^^^^^^^^^^^
   // //
   // // We can print the name of the reference frame for this robot.
-    RCLCPP_INFO(LOGGER, "Planning frame: %s", move_group.getPlanningFrame().c_str());
+  /*  RCLCPP_INFO(LOGGER, "Planning frame: %s", move_group.getPlanningFrame().c_str());
 
   // // We can also print the name of the end-effector link for this group.
   // RCLCPP_INFO(LOGGER, "End effector link: %s", move_group.getEndEffectorLink().c_str());
@@ -214,7 +348,7 @@ int main(int argc, char** argv)
   // a blocking function and requires a controller to be active
   // and report success on execution of a trajectory.
 
-  /* Uncomment below line when working with a real robot */
+  /* Uncomment below line when working with a real robot 
     move_group.move(); 
 
 
@@ -318,7 +452,7 @@ int main(int argc, char** argv)
 }
 
 
-/*// Planning with Path Constraints
+// Planning with Path Constraints
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   //
   // Path constraints can easily be specified for a link on the robot.
