@@ -3,8 +3,11 @@
 https://moveit.picknik.ai/humble/doc/examples/move_group_interface/move_group_interface_tutorial.html
 
 USAGE
-$1 ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py
-# nur realbot??  §2 ros2 launch emr2 hello_moveit_ur_launch.py 
+First set Parameters
+$1a ros2 param set /move_group publish_robot_description true
+$1b ros2 param set /move_group publish_robot_description_semantic true
+$1c ros2 launch ur_simulation_gz ur_sim_moveit.launch.py ur_type:=ur3e sim_time:=true
+
 $3 ros2 run  emr2 hello_moveit_ur 
 
 
@@ -12,21 +15,6 @@ $4 show pose of the interactive Marker
 $ ros2 topic echo /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update
 
 
-*/
-
-/* Ergänze im File  
- ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/launch/ur_moveit.launch.py
- ca. ab Zeile 184
- planning_scene_monitor_parameters = {
-        "publish_planning_scene": True,
-        "publish_geometry_updates": True,
-        "publish_state_updates": True,
-        "publish_transforms_updates": True,
-        "publish_robot_description": True,
-        "publish_robot_description_semantic": True,
-    }
-
-  Don't forget to save, rebuild ans source !!!!  
 */
 
 
