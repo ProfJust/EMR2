@@ -34,7 +34,7 @@ colcon build --event-handlers desktop_notification- status- --cmake-args -DCMAKE
 # to  /home/oju/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf
 
 cp ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/srdf/ur.srdf.xacro ~/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf/ur.srdf.xacro
-cp ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/srdf/ur_macro.srdf.xacro ~/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf/ur_macor.srdf.xacro
+cp ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/srdf/ur_macro.srdf.xacro ~/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf/ur_macro.srdf.xacro
 # Ergänze .bashrc
 # echo 'alias source='source ~/ur3_ws/install/local_setup.bash'' >> ~/.bashrc
 # echo 'alias co='colcon build --mixin release''             >> ~/.bashrc
