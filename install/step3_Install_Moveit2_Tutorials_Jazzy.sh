@@ -27,8 +27,14 @@ cd ~/ur3_ws
 # humble colcon build --mixin release   # nur so compiliert es, ohne mixin => fail
 colcon build --event-handlers desktop_notification- status- --cmake-args -DCMAKE_BUILD_TYPE=Release
 
+# Workaround for Error
+# WARNING:root:Cannot infer URDF from `/home/oju/ur3_ws/install/ur_moveit_config/share/ur_moveit_config`. -- using config/ur.urdf
+# [ERROR] [launch]: Caught exception in launch (see debug for traceback): "File /home/oju/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf/ur.srdf.xacro doesn't exist"
+# copy files in /home/oju/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/srdf
+# to  /home/oju/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf
 
-
+cp ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/srdf/ur.srdf.xacro ~/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf/ur.srdf.xacro
+cp ~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/srdf/ur_macro.srdf.xacro ~/ur3_ws/install/ur_moveit_config/share/ur_moveit_config/srdf/ur_macor.srdf.xacro
 # Ergänze .bashrc
 # echo 'alias source='source ~/ur3_ws/install/local_setup.bash'' >> ~/.bashrc
 # echo 'alias co='colcon build --mixin release''             >> ~/.bashrc
@@ -38,4 +44,8 @@ colcon build --event-handlers desktop_notification- status- --cmake-args -DCMAKE
 # sudo apt install ros-humble-rmw-cyclonedds-cpp -y
 # echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc  # Ergänze .bashrc
 
-ros2 launch moveit2_tutorials demo.launch.py rviz_config:=your_rviz_config.rviz
+#ros2 launch moveit2_tutorials demo.launch.py rviz_config:=your_rviz_config.rviz
+ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur3e
+
+
+
