@@ -222,6 +222,31 @@ planning_scene_interface.applyCollisionObject(collision_object2);
         RCLCPP_WARN(node->get_logger(), "Failed to execute motion plan.");
     }
 
+// Example usage Cartesian Path
+    std::vector<geometry_msgs::msg::Pose> waypoints; // Liste von Wegpunkten
+    waypoints.push_back(target_pose2);
+
+    geometry_msgs::msg::Pose target_pose3 = target_pose2;
+   
+    target_pose3.position.z += 0.2;
+    waypoints.push_back(target_pose3);  // up => in die Liste
+
+    target_pose3.position.z += 0.2;
+    target_pose3.position.y += 0.2;
+    target_pose3.position.x -= 0.2;
+    waypoints.push_back(target_pose3);  // up and left => in die Liste
+
+    // Trajektorie planen
+    moveit_msgs::msg::RobotTrajectory trajectory;
+    const double jump_threshold = 0.0;
+    const double eef_step = 0.01;
+    double fraction = move_group_if.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+    RCLCPP_INFO(node->get_logger(), "Visualizing plan 4 (Cartesian path) (%.2f%% achieved)", fraction * 100.0);
+
+    // ... und ausführen
+    move_group_if.execute(trajectory);
+
+
     // Shutdown ROS 2
     rclcpp::shutdown();
     return 0;
