@@ -1,0 +1,9 @@
+<!--ground/ground.sdf-->
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="ground">
+    <link name="body">
+      ...
+    </link>
+  </model>
+</sdf>

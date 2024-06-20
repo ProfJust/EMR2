@@ -1,11 +1,10 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
   <world name="simple_world">
-    <model name="ground">
-      <link name="body">
-        ...
-      </link>
-    </model>
+    <include>
+      <uri>ground</uri>      
+    </include>
+
     <model name="box">
       <pose>0 0 1 0 0 0</pose>
       <link name="body">

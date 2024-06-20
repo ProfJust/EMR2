@@ -1,0 +1,34 @@
+Kamera als PointCloud starten
+ros2 launch realsense2_camera rs_launch.py align_depth:=true pointcloud.enable:=true
+
+
+TF
+ros2 run emr2 tf_broadcaster camera_link -0.7 1 1.2 3 1.6 0
+
+
+Octomap Server
+ros2 launch emr2 octomap_server.launch.py 
+
+
+Moveit starten
+ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur3e
+
+
+
+  476  sudo apt install ros-humble-librealsense2*
+  478  sudo apt-get install python3-rosdep -y
+  479  sudo rosdep init # "sudo rosdep init --include-eol-distros" for Foxy and earlier
+  480  rosdep update # "sudo rosdep update --include-eol-distros" for Foxy and earlier
+  483  sudo apt install ros-humble-diagnostic-updater
+  575  sudo apt install ros-humble-moveit-ros-perception
+  619  sudo apt-get install ros-humble-octomap-rviz-plugins
+  626  sudo apt-get install ros-humble-pcl-ros
+  635  sudo apt-get install livox_ros_driver2
+  636  sudo apt-get install ros-humble-livox_ros_driver2
+  694  sudo apt install ros-humble-tf-transformations
+  834  sudo apt install ros-humble-rqt-tf-tree 
+  836  sudo apt install ros-humble-rqt-tf-tree 
+  869  sudo apt install ros-humble-moveit-ros-perception
+ 1008  sudo apt-get install ros-humble-octomap-rviz-plugins
+ 1076  sudo apt-get install ros-humble-octomap-server
+
