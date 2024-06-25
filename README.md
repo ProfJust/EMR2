@@ -67,6 +67,7 @@ Pakete installieren
   da die Kompilation von MoveIt hier sehr anspruchsvoll ist. Ggf. den Swap Buffer vergrößern.
   
 7. Nun sollte man die UR5 Gazebo Simulation + RViZ starten können
-  >$ ros2 launch ur_gazebo_sim ... 
+  >$ ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py ur_type:=ur3e
+
 
 
