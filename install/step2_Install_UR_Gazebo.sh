@@ -27,6 +27,7 @@ sudo apt-get install ros-humble-gazebo-ros2-control  -y
 
 sudo apt-get install ros-humble-joint-state-publisher -y
 sudo apt-get install ros-humble-joint-state-broadcaster -y
+sudo apt install ros-humble-rqt* -y
 
 
 
