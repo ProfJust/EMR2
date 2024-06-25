@@ -21,6 +21,13 @@ sudo apt install ros-humble-rqt-joint-trajectory-controller -y
 sudo apt install ros-humble-rqt-joint-trajectory-controller -y
 sudo apt install ros-humble-joint-trajectory-controller -y
 sudo apt install ros-humble-control-toolbox -y
+sudo apt-get install ros-humble-gazebo-ros  -y
+sudo apt-get install ros-humble-gazebo-ros-pkgs  -y
+sudo apt-get install ros-humble-gazebo-ros2-control  -y
+
+sudo apt-get install ros-humble-joint-state-publisher -y
+sudo apt-get install ros-humble-joint-state-broadcaster -y
+
 
 
 # falls es nicht in rqt zu finden ist 
