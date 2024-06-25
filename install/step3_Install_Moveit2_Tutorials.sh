@@ -41,6 +41,8 @@ sudo apt install ros-humble-graph-msgs -y
 sudo apt install ros-humble-ompl -y
 sudo apt install ros-humble-warehouse-ros -y
 sudo apt install ros-humble-rviz-visual-tools -y
+sudo apt-get install ros-humble-xacro -y
+sudo apt-get install ros-humble-gazebo-ros -y
 
 sudo apt update -y
 sudo apt dist-upgrade -y
