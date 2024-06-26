@@ -29,6 +29,12 @@ find_package(OpenCV REQUIRED)
 add_executable(open_cv_cpp_sw00_hello_world  src/open_cv_cpp_sw00_hello_world.cpp)
 ament_target_dependencies(open_cv_cpp_sw00_hello_world rclcpp std_msgs sensor_msgs cv_bridge image_transport OpenCV)
 
+add_executable(open_cv_cpp_sw01_read_camera  src/open_cv_cpp_sw01_read_camera.cpp)
+ament_target_dependencies(open_cv_cpp_sw01_read_camera rclcpp std_msgs sensor_msgs cv_bridge image_transport OpenCV)
+
+add_executable(open_cv_cpp_sw02_track_object  src/open_cv_cpp_sw02_track_object.cpp)
+ament_target_dependencies(open_cv_cpp_sw02_track_object rclcpp std_msgs sensor_msgs cv_bridge image_transport OpenCV)
+
 add_executable(tf_broadcaster  src/tf_broadcaster.cpp)
 ament_target_dependencies(tf_broadcaster geometry_msgs rclcpp tf2 tf2_ros turtlesim)
 
@@ -73,6 +79,8 @@ install(TARGETS talkerNode
                 hello_moveit_ur_realbot
                 tf_broadcaster 
                 open_cv_cpp_sw00_hello_world
+                open_cv_cpp_sw01_read_camera
+                open_cv_cpp_sw02_track_object
                 moveit_ur_gazebo_scene
   DESTINATION lib/${PROJECT_NAME})
 
