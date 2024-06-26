@@ -13,15 +13,16 @@ using namespace cv;
  
 int main( int argc, char** argv ){
  // show help
- if(argc<2){
- cout<<
- " Usage: tracker <video_name>\n"
- " examples:\n"
- " example_tracking_kcf Bolt/img/%04d.jpg\n"
- " example_tracking_kcf faceocc2.webm\n"
- << endl;
- return 0;
- }
+//  if(argc<2){
+//  cout<<
+//  " arguments missing \n"
+//  " Usage: tracker <video_name>\n"
+//  " examples:\n"
+//  " example_tracking_kcf Bolt/img/%04d.jpg\n"
+//  " example_tracking_kcf faceocc2.webm\n"
+//  << endl;
+//  return 0;
+//  }
  
  // declares all required variables
  Rect roi;
@@ -31,8 +32,9 @@ int main( int argc, char** argv ){
  Ptr<Tracker> tracker = TrackerKCF::create();
  
  // set input video
- std::string video = argv[1];
- VideoCapture cap(video);
+ 
+ //std::string video = argv[1];
+ VideoCapture cap(0);
  
  // get bounding box
  cap >> frame;
