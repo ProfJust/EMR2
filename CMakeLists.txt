@@ -22,6 +22,12 @@ find_package(graph_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(image_transport REQUIRED)
+find_package(OpenCV REQUIRED)
+
+add_executable(open_cv_cpp_sw00_hello_world  src/open_cv_cpp_sw00_hello_world.cpp)
+ament_target_dependencies(open_cv_cpp_sw00_hello_world rclcpp std_msgs sensor_msgs cv_bridge image_transport OpenCV)
 
 add_executable(tf_broadcaster  src/tf_broadcaster.cpp)
 ament_target_dependencies(tf_broadcaster geometry_msgs rclcpp tf2 tf2_ros turtlesim)
@@ -66,6 +72,7 @@ install(TARGETS talkerNode
                 hello_moveit_ur_gazebo
                 hello_moveit_ur_realbot
                 tf_broadcaster 
+                open_cv_cpp_sw00_hello_world
                 moveit_ur_gazebo_scene
   DESTINATION lib/${PROJECT_NAME})
 
