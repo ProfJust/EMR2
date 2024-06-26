@@ -29,7 +29,7 @@ int main( int argc, char** argv ){
     Mat frame;
     
     // create a tracker object
-    Ptr<Tracker> tracker = TrackerKCF::create();
+    Ptr<Tracker> tracker = TrackerCSRT::create();
     
     // set input video
     
@@ -49,7 +49,7 @@ int main( int argc, char** argv ){
     
     // perform the tracking process
     printf("Start the tracking process, press ESC to quit.\n");
-    
+
     for ( ;; ){
         // get frame from the video
         cap >> frame;
@@ -95,7 +95,7 @@ int main( int argc, char** argv ){
 // using namespace std;
  
 // // Convert to string
-// #define SSTR( x ) static_cast< std::ostringstream & >( \
+// #define SSTR( x ) static_cast< std::ostringstream & >( 
 // ( std::ostringstream() << std::dec << x ) ).str()
  
 // int main(int argc, char **argv)
