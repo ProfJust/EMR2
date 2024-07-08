@@ -1,0 +1,32 @@
+Mit diesen Files bringst Du eine Depthcam in Gazebo ans laufen und erzeugts eine Octompa in MOveit /Rviz
+
+
+1.) Installation von https://github.com/nilseuropa/realsense_ros_gazebo/tree/humble
+
+$ cd ur3_ws/src
+$ git clone https://github.com/nilseuropa/realsense_ros_gazebo.git -b humble
+
+
+2.) Xarco/urdf  - Files in den urdf Ordner bringen 
+/home/oj/ur3_ws/src/Universal_Robots_ROS2_Description
+
+3.) ur_moveit.launch.py File in den launch Ordner bringen
+~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/launch$ 
+
+
+4.) sensors_3d.YAML in den config Ordner 
+~/ur3_ws/src/Universal_Robots_ROS2_Driver/ur_moveit_config/config 
+ 
+5.)  ur_sim_control und ur_sim_moveit....launch.py in den Ordner kopieren
+
+~/ur3_ws/src/Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo/launch$ 
+
+
+
+
+usage:   build & source nicht vergessen
+
+$ros2 launch ur_simulation_gazebo ur_sim_moveit_mit_depthcam.launch.py ur_type:=ur3e
+
+
+
